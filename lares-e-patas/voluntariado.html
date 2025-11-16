@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voluntariado | Lares & Patas</title>
+    <!-- Carrega o Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Configuração de Cores Igual à página de Doação */
+        :root {
+            --color-primary: #ff8c00; 
+            --color-secondary: #FFD1B5; 
+            --color-dark: #5e381f; 
+        }
+        .bg-primary { background-color: var(--color-primary); }
+        .text-primary { color: var(--color-primary); }
+        .bg-secondary-light { background-color: #FFF0E5; }
+        .text-dark-brown { color: var(--color-dark); }
+
+        /* Estilo para Botão de Ação */
+        .btn-action {
+            background-color: var(--color-primary);
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        .btn-action:hover {
+            background-color: #E67350; /* Tom mais escuro no hover */
+            transform: translateY(-2px);
+        }
+
+        /* Estilo da Navbar */
+        .shadow-custom {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+
+        /* Estilo de Input customizado para Tailwind */
+        .input-custom {
+            @apply w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition duration-150;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-gray-50 text-dark-brown">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-custom sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.php" class="flex items-center space-x-2">
+                        <img src="https://placehold.co/40x40/FF8A65/ffffff?text=L&P" alt="Logo" class="h-10 w-10 rounded-full">
+                        <span class="text-xl font-bold text-dark-brown hidden sm:block">Lares & Patas</span>
+                    </a>
+                </div>
+                <!-- Links de Navegação -->
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8 items-center">
+                    <a href="adocao.php" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-dark-brown hover:text-primary transition duration-150">Adoção</a>
+                    <a href="blog.html" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-dark-brown hover:text-primary transition duration-150">Blog</a>
+                    <a href="doacao.html" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-dark-brown hover:text-primary transition duration-150">Doação</a>
+                    <a href="eventos.html" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-dark-brown hover:text-primary transition duration-150">Eventos</a>
+                    <a href="voluntariado.html" class="inline-flex items-center px-1 pt-1 text-sm font-medium border-b-2 border-primary text-primary">Voluntariado</a>
+                    <a href="login.php" class="ml-4 px-4 py-2 border border-primary text-primary text-sm font-medium rounded-lg hover:bg-primary hover:text-white transition duration-150">Login</a>
+                </div>
+                <!-- Botão Mobile -->
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-dark-brown hover:text-primary hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Abrir menu principal</span>
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile (oculto por JS) -->
+        <div class="sm:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="adocao.php" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-dark-brown hover:bg-gray-100 hover:border-primary">Adoção</a>
+                <a href="blog.html" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-dark-brown hover:bg-gray-100 hover:border-primary">Blog</a>
+                <a href="doacao.html" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-dark-brown hover:bg-gray-100 hover:border-primary">Doação</a>
+                <a href="eventos.html" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-dark-brown hover:bg-gray-100 hover:border-primary">Eventos</a>
+                <a href="voluntariado.html" class="block pl-3 pr-4 py-2 border-l-4 border-primary text-base font-medium text-primary bg-secondary-light">Voluntariado</a>
+                <a href="login.php" class="block px-3 py-2 text-center bg-primary text-white font-medium mx-4 rounded-lg mt-2">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner Principal -->
+    <header class="py-16 text-center text-white" style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl sm:text-5xl font-extrabold mb-3">Seja um herói de patas!</h1>
+            <p class="text-lg sm:text-xl font-light max-w-3xl mx-auto">Sua energia e tempo são valiosos para resgatar, cuidar e encontrar lares amorosos.</p>
+        </div>
+    </header>
+
+    <!-- Por que ser voluntário? -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center max-w-6xl">
+            <h2 class="text-3xl font-bold mb-4 text-dark-brown">Por que ser voluntário?</h2>
+            <p class="mb-10 text-lg text-gray-600 max-w-4xl mx-auto">
+                Ao se tornar voluntário, você participa de uma comunidade apaixonada por fazer a diferença. 
+                Não é necessário experiência prévia, apenas amor pelos animais e disposição para ajudar!
+            </p>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Área 1: Cuidados Diários -->
+                <div class="p-6 border-2 border-secondary rounded-xl shadow-lg hover:shadow-xl transition duration-300 h-full bg-secondary-light/50">
+                    <i data-lucide="paw-print" class="h-8 w-8 text-primary mx-auto mb-3"></i>
+                    <h5 class="text-xl font-bold mb-2 text-primary">Cuidados e Resgates</h5>
+                    <p class="text-sm text-gray-600">Ajude nos resgates, alimentação, limpeza e cuidados diários dos animais abrigados.</p>
+                </div>
+
+                <!-- Área 2: Divulgação -->
+                <div class="p-6 border-2 border-secondary rounded-xl shadow-lg hover:shadow-xl transition duration-300 h-full bg-secondary-light/50">
+                    <i data-lucide="megaphone" class="h-8 w-8 text-primary mx-auto mb-3"></i>
+                    <h5 class="text-xl font-bold mb-2 text-primary">Divulgação e Mídias</h5>
+                    <p class="text-sm text-gray-600">Crie conteúdos, fotos e campanhas digitais para acelerar as adoções e arrecadações.</p>
+                </div>
+
+                <!-- Área 3: Socialização -->
+                <div class="p-6 border-2 border-secondary rounded-xl shadow-lg hover:shadow-xl transition duration-300 h-full bg-secondary-light/50">
+                    <i data-lucide="smile" class="h-8 w-8 text-primary mx-auto mb-3"></i>
+                    <h5 class="text-xl font-bold mb-2 text-primary">Passeios e Socialização</h5>
+                    <p class="text-sm text-gray-600">Passeios e brincadeiras para garantir que os animais desenvolvam habilidades sociais e fiquem prontos para o lar.</p>
+                </div>
+                
+                <!-- Área 4: Eventos -->
+                <div class="p-6 border-2 border-secondary rounded-xl shadow-lg hover:shadow-xl transition duration-300 h-full bg-secondary-light/50">
+                    <i data-lucide="party-popper" class="h-8 w-8 text-primary mx-auto mb-3"></i>
+                    <h5 class="text-xl font-bold mb-2 text-primary">Eventos e Campanhas</h5>
+                    <p class="text-sm text-gray-600">Apoie a organização de feiras de adoção, bazares e eventos de arrecadação de fundos.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulário de Inscrição -->
+    <section class="py-16 bg-secondary-light">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-3xl font-bold text-center mb-4 text-dark-brown">Inscreva-se como voluntário</h2>
+            <p class="text-center text-lg text-gray-600 mb-8">Preencha o formulário e nossa equipe entrará em contato para um bate-papo inicial.</p>
+
+            <form class="bg-white p-8 md:p-10 rounded-xl shadow-2xl border-t-4 border-primary">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <!-- Nome -->
+                    <div>
+                        <label for="nome" class="block text-sm font-medium text-gray-700 mb-1">Nome completo</label>
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome" class="input-custom">
+                    </div>
+                    <!-- E-mail -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" class="input-custom">
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <!-- Telefone -->
+                    <div>
+                        <label for="telefone" class="block text-sm font-medium text-gray-700 mb-1">Telefone (WhatsApp)</label>
+                        <input type="text" id="telefone" name="telefone" placeholder="(11) 99999-9999" class="input-custom">
+                    </div>
+                    <!-- Área de Interesse (Dropdown) -->
+                    <div>
+                        <label for="area" class="block text-sm font-medium text-gray-700 mb-1">Área de Interesse</label>
+                        <select id="area" name="area" class="input-custom appearance-none">
+                            <option value="" disabled selected>Selecione uma ou mais áreas</option>
+                            <option value="cuidados">Cuidados Diários e Resgates</option>
+                            <option value="divulgacao">Divulgação e Mídias</option>
+                            <option value="socializacao">Passeios e Socialização</option>
+                            <option value="eventos">Eventos e Campanhas</option>
+                            <option value="geral">Qualquer área (Disponibilidade Geral)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Mensagem -->
+                <div class="mb-6">
+                    <label for="mensagem" class="block text-sm font-medium text-gray-700 mb-1">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte um pouco sobre você e por que quer ser voluntário." class="input-custom"></textarea>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn-action text-white px-8 py-3 rounded-full font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-primary focus:ring-opacity-50">
+                        Enviar Inscrição <i data-lucide="send" class="h-5 w-5 inline ml-2"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Depoimentos -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-8 text-dark-brown">O que nossos voluntários dizem</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Depoimento 1 -->
+                <div class="p-6 bg-secondary-light rounded-xl shadow-md border-l-4 border-primary">
+                    <p class="italic mb-4 text-gray-700">"Ser voluntário mudou minha vida! Conheci pessoas incríveis e ajudei muitos animais a encontrarem um lar."</p>
+                    <footer class="text-primary font-bold text-lg">Maria Silva</footer>
+                    <p class="text-sm text-gray-500">Voluntária de Socialização</p>
+                </div>
+                
+                <!-- Depoimento 2 -->
+                <div class="p-6 bg-secondary-light rounded-xl shadow-md border-l-4 border-primary">
+                    <p class="italic mb-4 text-gray-700">"A experiência de resgatar e cuidar dos animais é incrivelmente gratificante. Recomendo a todos!"</p>
+                    <footer class="text-primary font-bold text-lg">João Santos</footer>
+                    <p class="text-sm text-gray-500">Voluntário de Cuidados Diários</p>
+                </div>
+                
+                <!-- Depoimento 3 -->
+                <div class="p-6 bg-secondary-light rounded-xl shadow-md border-l-4 border-primary">
+                    <p class="italic mb-4 text-gray-700">"Faço parte da equipe de mídias e é motivador ver o impacto que causamos juntos na comunidade."</p>
+                    <footer class="text-primary font-bold text-lg">Ana Costa</footer>
+                    <p class="text-sm text-gray-500">Voluntária de Divulgação</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-100 text-center text-gray-600 py-6 border-t border-gray-200">
+        <div class="container mx-auto px-4">
+            <p class="mb-1 text-sm">© 2025 Lares & Patas | Rua das Flores, 1234 - Pinhalzinho/SP</p>
+            <p class="text-xs">
+                <a href="#" class="hover:text-primary transition duration-150">Política de Privacidade</a> | 
+                <a href="#" class="hover:text-primary transition duration-150">Termos de Uso</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Script para toggle do menu mobile
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+
+            button.addEventListener('click', () => {
+                const isExpanded = button.getAttribute('aria-expanded') === 'true' || false;
+                button.setAttribute('aria-expanded', !isExpanded);
+                menu.classList.toggle('hidden');
+            });
+
+            // Inicializa os ícones do Lucide
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

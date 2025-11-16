@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Lares & Patas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        
+        /*  PALETA DE CORES CONFORME AS PÁGINAS PHP */
+       
+        :root {
+            --color-primary: #ff8c00; /* Laranja Principal */
+            --color-secondary-light: #fff8e1; /* Laranja Suave (Fundo) */
+            --color-dark-brown: #6c2d12; /* Marrom Escuro (Rodapé/Texto) */
+            --color-highlight: #d9534f; /* Cor de Destaque/Títulos (Coral/Vermelho) */
+            --color-text: #333333; /* Texto Geral */
+        }
+        /* Custom Tailwind Classes */
+        .bg-primary { background-color: var(--color-primary); }
+        .text-primary { color: var(--color-primary); }
+        .bg-secondary-light { background-color: var(--color-secondary-light); }
+        .text-dark-brown { color: var(--color-dark-brown); }
+        .text-highlight { color: var(--color-highlight); } /* Novo para Títulos */
+
+        /* Estilo para Botão de Ação */
+        .btn-action {
+            background-color: var(--color-primary);
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        .btn-action:hover {
+            background-color: #e67e00; /* Tom mais escuro no hover */
+            transform: translateY(-1px);
+        }
+
+        /* Estilo da Navbar */
+        .shadow-custom {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-gray-50 text-gray-800">
+
+    <nav class="bg-white shadow-custom sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.php" class="flex items-center space-x-2">
+                        <img src="https://placehold.co/40x40/ff8c00/ffffff?text=L&P" alt="Logo" class="h-10 w-10 rounded-full">
+                        <span class="text-xl font-bold text-dark-brown hidden sm:block">Lares & Patas</span>
+                    </a>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8 items-center">
+                    <a href="adocao.php" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-700 hover:text-primary transition duration-150">Adoção</a>
+                    <a href="blog.html" class="inline-flex items-center px-1 pt-1 text-sm font-medium border-b-2 border-primary text-primary">Blog</a>
+                    <a href="doacao.html" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-700 hover:text-primary transition duration-150">Doação</a>
+                    <a href="eventos.html" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-700 hover:text-primary transition duration-150">Eventos</a>
+                    <a href="voluntariado.html" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-700 hover:text-primary transition duration-150">Voluntariado</a>
+                    <a href="login.php" class="ml-4 px-4 py-2 border border-primary text-primary text-sm font-medium rounded-lg hover:bg-primary hover:text-white transition duration-150">Login</a>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-dark-brown hover:text-primary hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Abrir menu principal</span>
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="sm:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="adocao.html" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-dark-brown hover:bg-gray-100 hover:border-primary">Adoção</a>
+                <a href="blog.html" class="block pl-3 pr-4 py-2 border-l-4 border-primary text-base font-medium text-primary bg-secondary-light">Blog</a>
+                <a href="doacao.html" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-dark-brown hover:bg-gray-100 hover:border-primary">Doação</a>
+                <a href="eventos.html" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-dark-brown hover:bg-gray-100 hover:border-primary">Eventos</a>
+                <a href="voluntariado.html" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-dark-brown hover:bg-gray-100 hover:border-primary">Voluntariado</a>
+                <a href="login.php" class="block px-3 py-2 text-center bg-primary text-white font-medium mx-4 rounded-lg mt-2">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="py-16 text-center text-white" style="background: linear-gradient(135deg, var(--color-primary) 0%, #ffc46d 100%);">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl sm:text-5xl font-extrabold mb-3">Notícias e Dicas Patudas</h1>
+            <p class="text-lg sm:text-xl font-light max-w-3xl mx-auto">Conteúdos sobre bem-estar animal, adoção responsável e histórias inspiradoras.</p>
+        </div>
+    </header>
+
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-7xl">
+            
+            <div class="grid lg:grid-cols-4 gap-8">
+                
+                <div class="lg:col-span-3 space-y-8">
+                    
+                    <article class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row border-t-4 border-primary">
+                        <div class="md:w-1/3 flex-shrink-0">
+                            <img src="https://placehold.co/600x400/fff8e1/6c2d12?text=Adocao+Responsavel" alt="Cachorro fofo olhando para a câmera" class="w-full h-48 md:h-full object-cover">
+                        </div>
+                        <div class="p-6 md:w-2/3">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-primary">Adoção</span>
+                            <h2 class="text-2xl font-bold mt-1 mb-3 hover:text-highlight transition duration-150 text-highlight">Checklist para Adoção Responsável: 5 Pontos Essenciais</h2>
+                            <p class="text-gray-600 mb-4">Adotar é um ato de amor, mas exige planejamento! Descubra os cinco pontos cruciais que você deve considerar antes de trazer um novo membro peludo para casa, garantindo o bem-estar de todos.</p>
+                            <div class="flex items-center justify-between text-sm text-gray-500">
+                                <span>Por Ana Luiza | 15/Out/2025</span>
+                                <a href="#" class="text-primary font-semibold hover:underline">
+                                    Leia mais <i data-lucide="arrow-right" class="h-4 w-4 inline ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row border-t-4 border-primary">
+                        <div class="md:w-1/3 flex-shrink-0">
+                            <img src="https://placehold.co/600x400/fff8e1/6c2d12?text=Cuidados+Pets" alt="Gato brincando com brinquedo" class="w-full h-48 md:h-full object-cover">
+                        </div>
+                        <div class="p-6 md:w-2/3">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-primary">Saúde</span>
+                            <h2 class="text-2xl font-bold mt-1 mb-3 hover:text-highlight transition duration-150 text-highlight">A Importância da Castração para a Saúde Comunitária</h2>
+                            <p class="text-gray-600 mb-4">A castração não é apenas uma forma de controle populacional, mas um pilar fundamental na prevenção de doenças graves e na melhoria da qualidade de vida dos animais de rua e domésticos.</p>
+                            <div class="flex items-center justify-between text-sm text-gray-500">
+                                <span>Por Dr. Carlos | 05/Out/2025</span>
+                                <a href="#" class="text-primary font-semibold hover:underline">
+                                    Leia mais <i data-lucide="arrow-right" class="h-4 w-4 inline ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row border-t-4 border-primary">
+                        <div class="md:w-1/3 flex-shrink-0">
+                            <img src="https://placehold.co/600x400/fff8e1/6c2d12?text=Voluntariado" alt="Voluntário brincando com cães" class="w-full h-48 md:h-full object-cover">
+                        </div>
+                        <div class="p-6 md:w-2/3">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-primary">Comunidade</span>
+                            <h2 class="text-2xl font-bold mt-1 mb-3 hover:text-highlight transition duration-150 text-highlight">História de Sucesso: Como o voluntariado mudou a vida do Tobi</h2>
+                            <p class="text-gray-600 mb-4">Conheça a emocionante jornada de Tobi, um cão que chegou desconfiado e, graças ao carinho e dedicação dos nossos voluntários, hoje é um pet sociável e feliz, pronto para ser adotado.</p>
+                            <div class="flex items-center justify-between text-sm text-gray-500">
+                                <span>Por Equipe L&P | 28/Set/2025</span>
+                                <a href="#" class="text-primary font-semibold hover:underline">
+                                    Leia mais <i data-lucide="arrow-right" class="h-4 w-4 inline ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <div class="flex justify-center mt-10">
+                        <nav class="flex space-x-2">
+                            <a href="#" class="px-4 py-2 text-gray-500 bg-white rounded-lg hover:bg-gray-100">Anterior</a>
+                            <a href="#" class="px-4 py-2 text-white bg-primary rounded-lg font-bold">1</a>
+                            <a href="#" class="px-4 py-2 text-gray-700 bg-white rounded-lg hover:bg-gray-100">2</a>
+                            <a href="#" class="px-4 py-2 text-gray-700 bg-white rounded-lg hover:bg-gray-100">3</a>
+                            <a href="#" class="px-4 py-2 text-gray-500 bg-white rounded-lg hover:bg-gray-100">Próxima</a>
+                        </nav>
+                    </div>
+
+                </div>
+
+                <aside class="lg:col-span-1 space-y-8">
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-2 border-primary">
+                        <h3 class="text-xl font-bold mb-4 text-dark-brown">Buscar no Blog</h3>
+                        <div class="relative">
+                            <input type="search" placeholder="Ex: Ração, dicas, gatos" class="w-full p-3 border border-gray-300 rounded-lg pr-10 focus:ring-primary focus:border-primary">
+                            <i data-lucide="search" class="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"></i>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-2 border-primary">
+                        <h3 class="text-xl font-bold mb-4 text-dark-brown">Categorias</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-700 hover:text-primary flex justify-between items-center">Adoção Responsável <span class="bg-secondary-light text-dark-brown text-xs px-2 py-0.5 rounded-full"> (8)</span></a></li>
+                            <li><a href="#" class="text-gray-700 hover:text-primary flex justify-between items-center">Saúde e Bem-estar <span class="bg-secondary-light text-dark-brown text-xs px-2 py-0.5 rounded-full"> (12)</span></a></li>
+                            <li><a href="#" class="text-gray-700 hover:text-primary flex justify-between items-center">Histórias de Resgate <span class="bg-secondary-light text-dark-brown text-xs px-2 py-0.5 rounded-full"> (5)</span></a></li>
+                            <li><a href="#" class="text-gray-700 hover:text-primary flex justify-between items-center">Dicas de Treinamento <span class="bg-secondary-light text-dark-brown text-xs px-2 py-0.5 rounded-full"> (4)</span></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-2 border-primary">
+                        <h3 class="text-xl font-bold mb-4 text-dark-brown">Mais Lidas</h3>
+                        <div class="space-y-4">
+                            <a href="#" class="flex space-x-3 hover:bg-gray-50 p-2 rounded-lg transition duration-150">
+                                <span class="text-primary font-extrabold text-2xl">01.</span>
+                                <div>
+                                    <p class="text-sm font-semibold text-dark-brown">5 Erros Comuns ao Dar Banho em Gatos</p>
+                                    <p class="text-xs text-gray-500">Dicas | 2 min leitura</p>
+                                </div>
+                            </a>
+                            <a href="#" class="flex space-x-3 hover:bg-gray-50 p-2 rounded-lg transition duration-150">
+                                <span class="text-primary font-extrabold text-2xl">02.</span>
+                                <div>
+                                    <p class="text-sm font-semibold text-dark-brown">O que fazer se encontrar um filhote abandonado?</p>
+                                    <p class="text-xs text-gray-500">Resgate | 4 min leitura</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </aside>
+                
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-dark-brown text-center text-white py-6 border-t border-gray-200">
+        <div class="container mx-auto px-4">
+            <p class="mb-1 text-sm">© 2025 Lares & Patas | Rua das Flores, 1234 - Pinhalzinho/SP</p>
+            <p class="text-xs">
+                <a href="#" class="text-yellow-400 hover:text-yellow-300 transition duration-150">Política de Privacidade</a> | 
+                <a href="#" class="text-yellow-400 hover:text-yellow-300 transition duration-150">Termos de Uso</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Script para toggle do menu mobile
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+
+            button.addEventListener('click', () => {
+                const isExpanded = button.getAttribute('aria-expanded') === 'true' || false;
+                button.setAttribute('aria-expanded', !isExpanded);
+                menu.classList.toggle('hidden');
+            });
+
+            // Inicializa os ícones do Lucide
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
